@@ -22,9 +22,10 @@
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=${localWorkspaceFolder}/data,target=/workspace/data,type=bind",
-    "source=${localWorkspaceFolder}/uploads,target=/workspace/uploads,type=bind"
+    "source=${localWorkspaceFolder}/uploads,target=/workspace/uploads,type=bind",
+    "source=${localWorkspaceFolder}/container_data,target=/workspaces/contenedores/container_data,type=bind"
   ],
-  "postCreateCommand": "sudo groupadd -f docker && sudo usermod -aG docker node && sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock && sudo mkdir -p /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chown -R node:node /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chmod -R 775 /workspace/data /workspace/uploads /workspaces/contenedores/container_data && cd server && npm install",
+  "postCreateCommand": "sudo groupadd -f docker && sudo usermod -aG docker node && sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock && sudo mkdir -p /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chown -R node:node /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chmod -R 777 /workspace/data /workspace/uploads /workspaces/contenedores/container_data && cd server && npm install",
   "postStartCommand": "bash /workspaces/contenedores/inicio.sh",
   "remoteUser": "node"
 }
